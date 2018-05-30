@@ -1,0 +1,263 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% block meta_title %}{% trans "Home" %}{% endblock %}
+{% block title %}{% trans "Home" %}{% endblock %}
+{% block top %}
+
+{% endblock %}
+
+{% block main %}
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112601577-2"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-112601577-2');
+</script>
+-->
+<section class="no-margin" id="main-slider">
+        <div class="carousel slide wet-asphalt">
+            <ol class="carousel-indicators">
+                <li class="" data-slide-to="0" data-target="#main-slider"></li>
+                <li data-slide-to="1" data-target="#main-slider" class=""></li>
+                <li data-slide-to="2" data-target="#main-slider" class="active"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div style="background-image: url(static/images/slider/bg10.jpg)" class="item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="carousel-content center centered" style="margin-top: 265px;">
+                                    <h2 class="animation animated-item-1">Instantly track regulatory updates</h2>
+                                    <p class="animation animated-item-2"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+                <div style="background-image: url(static/images/slider/bg7.jpg)" class="item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="carousel-content center centered" style="margin-top: 250.0px;">
+                                    <h2 class="animation animated-item-1">...with AI-powered searches</h2>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+                <div style="background-image: url(static/images/slider/bg3.jpg)" class="item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="carousel-content centered" style="margin-top: 219px;">
+                                    <h2 class="animation animated-item-1">See it in action...</h2>
+                                    <p class="animation animated-item-2">Click on the video to see more...</p>
+                                    <a href="https://deltaregulation.com" class="btn btn-md animation animated-item-3">Learn More</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 hidden-xs animation animated-item-4">
+                                <div class="centered" style="margin-top: 129px;">
+                                    <div class="embed-container">
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/1Fbuw0mp7hI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+        <a data-slide="prev" href="#main-slider" class="prev hidden-xs">
+            <i class="icon-angle-left"></i>
+        </a>
+        <a data-slide="next" href="#main-slider" class="next hidden-xs">
+            <i class="icon-angle-right"></i>
+        </a>
+    </section>
+    <section class="emerald" id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="media">
+                        <div class="pull-left">
+                            <i class="icon-globe icon-md"></i>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Global</h3>
+                            <p>24 hour coverage of regulatory updates from around the world in a single website.</p>
+                        </div>
+                    </div>
+                </div><!--/.col-md-4-->
+                <div class="col-md-4 col-sm-6">
+                    <div class="media">
+                        <div class="pull-left">
+                            <i class="icon-refresh icon-md"></i>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Instant</h3>
+                            <p>AI summaries provide an instant overview of rules as soon as they are released.</p>
+                        </div>
+                    </div>
+                </div><!--/.col-md-4-->
+                <div class="col-md-4 col-sm-6">
+                    <div class="media">
+                        <div class="pull-left">
+                            <i class="icon-search icon-md"></i>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Powerful</h3>
+                            <p>Filter out irrelevant content and easily locate regulation important to you.</p>
+                        </div>
+                    </div>
+                </div><!--/.col-md-4-->
+            </div>
+        </div>
+    </section>
+	 <section id="recent-works">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h3>Delta Regulation</h3>
+                    <p>Click to see more</p>
+                    <div class="btn-group">
+                        <a class="btn btn-danger" href="#scroller" data-slide="prev"><i class="icon-angle-left"></i></a>
+                        <a class="btn btn-danger" href="#scroller" data-slide="next"><i class="icon-angle-right"></i></a>
+                    </div>
+                    <p class="gap"></p>
+                </div>
+                <div class="col-md-9">
+                    <div id="scroller" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <div class="portfolio-item">
+                                            <div class="item-inner">
+                                                <img class="img-responsive" src="{% static "images/portfolio/thumb/item4.png" %}" alt="">
+                                                <h5 align="center">
+                                                 Global coverage
+                                                </h5>
+                                                <div class="overlay">
+                                                    <a class="preview btn btn-danger" title="Welcome to the Delta Regulation blog" href="{% static  "images/portfolio/recent/item1.png" %}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="portfolio-item">
+                                            <div class="item-inner">
+                                                <img class="img-responsive" src="{% static "images/portfolio/thumb/item2.png" %}" alt="">
+                                                <h5 align="center">
+                                                    Instant summaries
+                                                </h5>
+                                                <div class="overlay">
+                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="{% static  "images/portfolio/full/item2.png" %}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="portfolio-item">
+                                            <div class="item-inner">
+                                                <img class="img-responsive" src="{% static "images/portfolio/thumb/item5.png" %}" alt="">
+                                                <h5 align="center">
+                                                    Powerful search
+                                                </h5>
+                                                <div class="overlay">
+                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="{% static  "images/portfolio/full/item3.png" %}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--/.row-->
+                            </div><!--/.item-->
+                            <!-- <div class="item">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <div class="portfolio-item">
+                                            <div class="item-inner">
+                                                <img class="img-responsive" src="{% static "images/portfolio/recent/item3.png" %}" alt="">
+                                                <h5>
+                                                    Flat Theme - Business Theme
+                                                </h5>
+                                                <div class="overlay">
+                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="{% static  "images/portfolio/full/item1.jpg" %}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="portfolio-item">
+                                            <div class="item-inner">
+                                                <img class="img-responsive" src="{% static "images/portfolio/recent/item1.png" %}" alt="">
+                                                <h5>
+                                                    Nova - Corporate site template
+                                                </h5>
+                                                <div class="overlay">
+                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="{% static  "images/portfolio/full/item1.jpg" %}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <div class="portfolio-item">
+                                            <div class="item-inner">
+                                                <img class="img-responsive" src="{% static "images/portfolio/recent/item3.png" %}" alt="">
+                                                <h5>
+                                                    Fornax - Apps site template
+                                                </h5>
+                                                <div class="overlay">
+                                                    <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="{% static  "images/portfolio/full/item1.jpg" %}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div><!--/.item-->
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.row-->
+        </div>
+    </section><!--/#recent-works-->
+	<section id="testimonial" class="alizarin">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="center">
+                        <h2>What people have to say about us</h2>
+                        <p>With clients around the world, Delta Regulation is a must have resource. Browse below to see what users think of us...</p>
+                    </div>
+                    <div class="gap"></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <blockquote>
+                                <p>Any compliance officer who's job it is to keep on top of these matters should be interested.</p>
+                                <small>Vinh Tuong, <cite title="Source Title"></cite>Barclays</small>
+                            </blockquote>
+                            <blockquote>
+                                <p>Delta regulation makes it easy to search for regulatory content.</p>
+                                <small>Nicholas MacKay, <cite title="Source Title">Lexis Nexis</cite></small>
+                            </blockquote>
+                        </div>
+                        <div class="col-md-6">
+                            <blockquote>
+                                <p>It makes finding regulatory content easy!</p>
+                                <small>Pierre Finot, <cite title="Source Title">Numelogos</cite></small>
+                            </blockquote>
+                            <blockquote>
+                                <p>Finally something to help me keep track of new FCA consutlations.</p>
+                                <small>Julien Almarcha, <cite title="Source Title">LabResult</cite></small>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/#testimonial-->
+
+
+{% endblock %}
+
