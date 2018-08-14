@@ -88,7 +88,7 @@
 		 {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
 			{% block blog_post_list_post_featured_image %}
 			<a href="{{ blog_post.get_absolute_url }}">
-				<img width="1%" class="img-responsive img-blog" src="{{ MEDIA_URL }}{{ blog_post.featured_image }}">
+				<img width="100%" class="img-responsive img-blog" src="{{ MEDIA_URL }}{{ blog_post.featured_image }}">
 			</a>
 			{% endblock %}
 			{% endif %}
@@ -151,7 +151,8 @@
 <br>
 
  <a href="{{ blog_post.get_absolute_url }}"  class="btn btn-default">{% trans "read more" %} <i class="icon-angle-right"> </i></a>
- <br>
+<br>
+
 {% block blog_post_list_post_links %}
 <br>
 {% keywords_for blog_post as tags %}

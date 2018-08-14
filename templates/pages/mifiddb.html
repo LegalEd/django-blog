@@ -1,0 +1,495 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags %}
+
+{% block meta_title %}{% if page %}{{ page.meta_title }}{% else %}{% trans "Blog" %}{% endif %}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ page.description }}
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+{% if page %}
+{% editable page.title %}{{ page.title }}{% endeditable %}
+{% else %}
+{% trans "Blog" %}
+{% endif %}
+{% endblock %}
+
+{% block breadcrumb_menu %}
+{{ block.super }}
+{% if tag or category or year or month or author %}
+<li>{% spaceless %}
+{% if tag %}
+    {% trans "Tag:" %} {{ tag }}
+{% else %}{% if category %}
+    {% trans "Category:" %} {{ category }}
+{% else %}{% if year or month %}
+    {% if month %}{{ month }}, {% endif %}{{ year }}
+{% else %}{% if author %}
+    {% trans "Author:" %} {{ author.get_full_name|default:author.username }}
+{% endif %}{% endif %}{% endif %}{% endif %}
+{% endspaceless %}
+</li>
+{% endif %}
+{% endblock %}
+
+{% block main %}
+<section id="blog" class="container">
+    <div class="row">
+        <h1>MiFID II/MiFIR </h1>
+        <p>
+
+This page is a curated compliation of MiFID II and MiFIR regulatory updates from the FCA, PRA, ESMA.
+
+On 20 October 2011, the European Commission adopted formal proposals for a Directive 2014/65/EU on markets in financial instruments repealing Directive 2004/39/EC (MiFID II) and the Regulation on markets in financial instruments (MiFIR). The directive's objective is to increase competition and consumer protection in financial services. </p>
+
+
+        {% block right_panel %}
+         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search content..">
+         <br>
+         <br>
+
+    <table id="myTable">
+      <tr class="header">
+        <th style="width:50%;">URL</th>
+        <th style="width:40%;">Category</th>
+        <th style="width:10%;">Date</th>
+      </tr>
+      <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/forms/mifid-change-legal-status-notes.docx"><div style="height:100%;width:100%">FCA change of legal status for MiFID firms</div></td>
+        <td>Authorization</td>
+        <td>04/06/2018</td>
+      </tr>
+      <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/impact-assessments/mifid-ii-independence.pdf"><div style="height:100%;width:100%">FCA MiFID II independence</div></td>
+        <td>Authorization</td>
+        <td>04/07/2018</td>
+      </tr>
+      <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/impact-assessments/mifid-ii-client-categorisation.pdf"><div style="height:100%;width:100%">FCA MiFID II client categorisation</div></td>
+        <td>Authorization</td>
+        <td>04/07/2018</td>
+      </tr>
+      <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/impact-assessments/mifid-ii-taping.pdf"><div style="height:100%;width:100%">FCA MiFID II taping</div></td>
+        <td>Authorization</td>
+        <td>04/07/2018</td>
+      </tr>
+       <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/impact-assessments/mifid-ii-inducements.pdf"><div style="height:100%;width:100%">FCA MiFID II inducements</div></td>
+        <td>Authorization</td>
+        <td>04/07/2018</td>
+      </tr>
+       <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/forms/mifid-partnership-notification-for-change-in-controller.doc"><div style="height:100%;width:100%">FCA parternship notification for change in controller</div></td>
+        <td>Authorization</td>
+        <td>06/07/2018</td>
+      </tr>
+       <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/forms/mifid-individual-notification-for-change-in-controller.doc"><div style="height:100%;width:100%">FCA individual notification for change in controller</div></td>
+        <td>Authorization</td>
+        <td>06/07/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/forms/mifid-intragroup-notification-for-change-in-controller.doc"><div style="height:100%;width:100%">FCA intragroup notification for change in controller</div></td>
+       <td>Authorization</td>
+        <td>06/07/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/forms/mifid-trust-notification-for-change-in-controller.doc"><div style="height:100%;width:100%">FCA trust notification for change in controller</div></td>
+        <td>Authorization</td>
+        <td>06/07/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/consultation/cp18-21.pdf"><div style="height:100%;width:100%">FCA general standards and communication rules for payment services and e-money sectors (CP18/21)</div></td>
+       <td>Communication</td>
+        <td>01/08/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/consultation/cp18-11.pdf"><div style="height:100%;width:100%">FCA reviewing the funding of the Financial Services Compensation Scheme (CP18/11)</div></td>
+        <td>Compensation</td>
+        <td>01/05/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/consultation/cp18-10.pdf"><div style="height:100%;width:100%">FCA regulated fees and levies (CP18/10)</div></td>
+        <td>Fees</td>
+        <td>09/04/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/policy/ps18-03.pdf"><div style="height:100%;width:100%">FCA Permieter guidance on personal recommendations on retail investments (PS18/3)</div></td>
+        <td>Retail Investments</td>
+        <td>23/02/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.fca.org.uk/news/statements/fca-statement-esma-temporary-product-intervention-retail-cfd-binary-options"><div style="height:100%;width:100%">FCA statement on ESMA CFD product intervention measures</div></td>
+        <td>Retail Investments</td>
+        <td>27/03/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/policy/ps18-08.pdf"><div style="height:100%;width:100%">FCA asset management market study remedies and handbook changes (PS18/8)</div></td>
+        <td>Retail Investments</td>
+        <td>05/04/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/consultation/cp18-09.pdf"><div style="height:100%;width:100%">FCA consultation on asset management remedies (CP18/9)</div></td>
+        <td>Retail Investments</td>
+        <td>05/04/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/policy/ps18-10.pdf"><div style="height:100%;width:100%">FCA policy statement on retiring FG12/15 and FG14/1 (PS18/10)</div></td>
+        <td>Retail Investments</td>
+        <td>09/04/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/consultation/cp18-20.pdf"><div style="height:100%;width:100%">FCA proposed changes to rules for crowdfunding platforms (CP18/20)</div></td>
+        <td>Retail Investments</td>
+        <td>27/07/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/policy/ps18-07.pdf"><div style="height:100%;width:100%">FCA staff incentives, remuneration and performance management in consumer credit (PS18/7)</div></td>
+        <td>Remuneration</td>
+        <td>27/03/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/policy/ps18-06.pdf"><div style="height:100%;width:100%">FCA advising on Pension Transfers (PS18/6)</div></td>
+
+        <td>Pensions</td>
+        <td>26/03/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/consultation/cp18-07.pdf"><div style="height:100%;width:100%">FCA improving the quality of pension transfer advice (CP18/7)</div></td>
+        <td>Pensions</td>
+        <td>26/03/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/consultation/cp18-17.pdf"><div style="height:100%;width:100%">FCA retirement outcomes review (CP18/17)</div></td>
+        <td>Pensions</td>
+        <td>28/06/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.fca.org.uk/publication/market-studies/ms17-1-2.pdf"><div style="height:100%;width:100%">FCA investment platforms market study (MS17/1.2)</div></td>
+        <td>Studies</td>
+        <td>16/07/2018</td>
+      </tr>
+<tr>
+
+        <td><a href="https://www.fca.org.uk/publication/market-studies/ms17-1-2-annex-1.pdf"><div style="height:100%;width:100%">FCA investment platforms market study (MS17/1.2) - Annex</div></td>
+        <td>Studies</td>
+        <td>16/07/2018</td>
+      </tr>
+
+<tr>
+
+        <td><a href="https://www.bankofengland.co.uk/prudential-regulation/publication/2017/responses-to-cp-18-17-chapters-7-and-8"><div style="height:100%;width:100%">PRA responses to CP18/17 Ocassional Consultation Paper - Chapters 7 and 8</div></td>
+        <td>Passporting</td>
+        <td>23/02/2018</td>
+      </tr>
+
+<tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-publishes-key-transparency-calculations-mifidiimifir-implementation"><div style="height:100%;width:100%">ESMA publishes key transparency calculations for MiFIDII/MiFIR implementation</div></td>
+        <td>Transparency</td>
+        <td>06/12/2017</td>
+      </tr>
+
+<tr>
+
+        <td><a href="https://www.esma.europa.eu/file/24070/download?token=AmaAHVvN"><div style="height:100%;width:100%">ESMA publishes key transparency calculations for MiFIDII/MiFIR implementation</div></td>
+        <td>Transparency</td>
+        <td>06/12/2017</td>
+      </tr>
+
+<tr>
+
+        <td><a href="https://www.esma.europa.eu/file/23526/download?token=8m5hc9tx"><div style="height:100%;width:100%">ESMA MiFID II Q&A on post-trading issues</div></td>
+        <td>Post-trading</td>
+        <td>06/12/2017</td>
+      </tr>
+
+      <tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-updates-qa-mifir-data-reporting-1"><div style="height:100%;width:100%">ESMA updates Q&A on MiFIR data reporting</div></td>
+        <td>Post-trading</td>
+        <td>06/12/2017</td>
+      </tr>
+
+      <tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-provides-overview-mifid-ii-deferral-regimes"><div style="height:100%;width:100%"> ESMA provides overview of MiFID II deferral regimes</div></td>
+        <td>Post-trading</td>
+        <td>18/12/2017</td>
+      </tr>
+
+
+      <tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-updates-its-mifid-ii-qas-transparency-and-market-structures"><div style="height:100%;width:100%">ESMA updates its MiFID II Q&As on transparency and market structures</div></td>
+        <td>Transparency</td>
+        <td>18/12/2017</td>
+      </tr>
+
+        <tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-provides-guidance-cross-border-investment-services-and-mifid-transposition"><div style="height:100%;width:100%">ESMA provides guidance on cross-border investment services and MiFID transposition</div></td>
+        <td>Cross-borders</td>
+        <td>18/12/2017</td>
+      </tr>
+
+   <tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-updates-mifid-ii-trading-halts-procedure"><div style="height:100%;width:100%">ESMA updates MiFID II trading halts procedure</div></td>
+        <td>Trading</td>
+        <td>18/12/2017</td>
+      </tr>
+
+   <tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-issues-statement-lei-implementation-under-mifid-ii"><div style="height:100%;width:100%">ESMA issues statement on LEI implementation under MiFID II</div></td>
+        <td>Transparency</td>
+        <td>20/12/2017</td>
+      </tr>
+
+   <tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-updates-its-cfi-validations-mifid-ii"><div style="height:100%;width:100%">ESMA updates its CFI validations for MiFID II</div></td>
+        <td>Transparency</td>
+        <td>20/12/2017</td>
+      </tr>
+
+
+ <tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-issues-list-trading-venues-temporarily-exempted-open-access-under-mifir"><div style="height:100%;width:100%">ESMA issues list of trading venues temporarily exempted from open access under MiFIR</div></td>
+        <td>Transition</td>
+        <td>09/01/2018</td>
+      </tr>
+
+<tr>
+
+        <td><a href="https://www.esma.europa.eu/file/24331/download?token=dW01pNGY"><div style="height:100%;width:100%">ESMA list of trading venues benefiting from a transitional exemption from the access provisions under Article 36(5)</div></td>
+        <td>Transition</td>
+        <td>09/01/2018</td>
+      </tr>
+
+
+<tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-publishes-register-derivatives-be-traded-venue-under-mifir"><div style="height:100%;width:100%">ESMA publishes register of derivatives to be traded on-venue under MiFIR</div></td>
+        <td>Trading</td>
+        <td>09/01/2018</td>
+      </tr>
+
+<tr>
+
+        <td><a href="https://www.esma.europa.eu/file/24368/download?token=dYYeHI1y"><div style="height:100%;width:100%">ESMA overview of MiFID II position management controls</div></td>
+        <td>Position controls</td>
+        <td>15/01/2018</td>
+      </tr>
+<tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-consults-potential-cfd-and-binary-options-measures-protect-retail"><div style="height:100%;width:100%">ESMA consults on potential CFD and binary options measures to protect retail investors</div></td>
+        <td>Derivatives</td>
+        <td>18/01/2018</td>
+      </tr>
+
+<tr>
+
+        <td><a href="https://www.esma.europa.eu/file/47168/download?token=N5e810Kz"><div style="height:100%;width:100%">ESMA guidelines on MiFID II product governance requirements</div></td>
+        <td>Product Governance</td>
+        <td>05/02/2018</td>
+      </tr>
+    <tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-updates-its-csdr-qas-0"><div style="height:100%;width:100%">ESMA updates its CSDR Q&As</div></td>
+        <td>Depositories</td>
+        <td>06/02/2018</td>
+      </tr>
+   <tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-publishes-responses-its-consultation-proposed-amendment-mifid-ii-rts-1"><div style="height:100%;width:100%">ESMA publishes the responses to its Consultation on proposed amendment to MiFID II RTS 1</div></td>
+        <td>Trading</td>
+        <td>07/02/2018</td>
+      </tr>
+
+   <tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-publishes-2018-supervisory-convergence-work-programme"><div style="height:100%;width:100%">ESMA publishes 2018 Supervisory Convergence Work Programme</div></td>
+        <td>Supervisory convergence</td>
+        <td>07/02/2018</td>
+      </tr>
+
+   <tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-clarifies-treatment-packages-under-mifir%E2%80%99s-trading-obligation-derivatives"><div style="height:100%;width:100%">ESMA clarifies treatment of packages under MiFIR’s trading obligation for derivatives</div></td>
+        <td>Derivatives</td>
+        <td>21/03/2018</td>
+      </tr>
+
+  <tr>
+
+        <td><a href="https://www.esma.europa.eu/file/47714/download?token=VlUT6Ghg"><div style="height:100%;width:100%">ESMA compliance table - Guidelines on the management body of market operators and DRSPs under MiFID II</div></td>
+        <td>Derivatives</td>
+        <td>26/03/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-clarifies-mifir-quoting-obligations-systematic-internalisers"><div style="height:100%;width:100%">ESMA clarifies MiFIR quoting obligations for systematic internalisers</div></td>
+        <td>Trading</td>
+        <td>26/03/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-agrees-position-limits-under-mifid-ii"><div style="height:100%;width:100%">ESMA agrees position limits under MiFID II</div></td>
+        <td>Trading</td>
+        <td>09/04/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-asks-commission-clarify-ancillary-activity-test-under-mifid-ii"><div style="height:100%;width:100%">ESMA asks Commission to clarify ancillary activity test under MiFID II</div></td>
+        <td>Trading</td>
+        <td>10/04/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-launches-bond-liquidity-system-under-mifid-ii"><div style="height:100%;width:100%">  ESMA launches bond liquidity system under MiFID II</div></td>
+        <td>Trading</td>
+        <td>02/05/2018</td>
+      </tr>
+
+
+ <tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/esma-adopts-final-product-intervention-measures-cfds-and-binary-options"><div style="height:100%;width:100%">ESMA adopts final product intervention measures on CFDs and binary options</div></td>
+        <td>Derivatives</td>
+        <td>01/06/2018</td>
+      </tr>
+
+ <tr>
+
+        <td><a href="https://www.esma.europa.eu/press-news/esma-news/mifid-ii-esma-publishes-data-systematic-internaliser-calculations-equity-equity"><div style="height:100%;width:100%">ESMA publishes data for the systematic internaliser calculations for equity, equity-like instruments</div></td>
+        <td>Derivatives</td>
+        <td>01/08/2018</td>
+      </tr>
+
+
+
+
+
+
+    </table>
+
+<br>
+<br>
+
+{% endblock %}
+
+
+
+<script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+

@@ -4,6 +4,7 @@ from django.conf.urls import include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.views.i18n import set_language
+from django.views import generic
 
 from mezzanine.core.views import direct_to_template
 from mezzanine.conf import settings
@@ -77,6 +78,7 @@ urlpatterns += [
     # ``mezzanine.urls``, go right ahead and take the parts you want
     # from it, and use them directly below instead of using
     # ``mezzanine.urls``.
+    url("^mifiddb", generic.TemplateView.as_view(template_name="pages/mifiddb.html"), name="mifiddb"),
     url("^", include("mezzanine.urls")),
 
     # MOUNTING MEZZANINE UNDER A PREFIX

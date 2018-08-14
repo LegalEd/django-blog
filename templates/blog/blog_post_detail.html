@@ -21,11 +21,27 @@
 <li class="active">{{ blog_post.title }}</li>
 {% endblock %}
 
+
 {% block main %}
 <section id="blog" class="container">
 	<div class="row">
-		<div class="col-sm-8">
-			<div class="blog">
+<!- adsense script is here ->
+        {% block right_panel %}
+        <aside class="col-sm-4 col-sm-push-8">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-7515437548525617",
+          enable_page_level_ads: true
+     });
+</script>
+
+
+        </aside>
+        {% endblock %}
+        <div class="col-sm-8 col-sm-pull-4">
+            <div class="blog">
+
 			<div class="blog-item">
 		 {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
 			{% block blog_post_list_post_featured_image %}
@@ -34,7 +50,13 @@
 			</a>
 			{% endblock %}
 			{% endif %}
+
+
+
+
+
 		<div class="blog-content">
+
 
 	{% block blog_post_list_post_title %}
 
@@ -75,7 +97,7 @@
 									{% endif %}
 
                                 </span>
-                            </div>
+
 
 {% endeditable %}
 {% endblock %}
@@ -118,9 +140,18 @@ need to add |safe to allow HTML text formatting. Otherwise it is escaped to text
 {% endblock %}
 
 </div>
+
+
 </div>
+
 </div>
+
+
 </div>
+
+</div>
+
+
 </div>
 </section>
 {% endblock %}
